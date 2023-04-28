@@ -22,7 +22,7 @@ public class PapotageEvent extends EventObject {
 
     @Override
     public String toString() {
-        return "Message de "+this.source+" {" +
+        return "Message de "+this.source.toString()+" {" +
                 "sujet : " + sujet + '\'' +
                 ", corps : " + corps +
                 '}';

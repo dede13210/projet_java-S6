@@ -6,18 +6,33 @@ public class Bavard implements IPapotageListener {
 
     public Bavard(String nom) {
         this.nom = nom;
+        this.listConcierge=new ArrayList<Concierge>();
     }
 
     public String getNom() {
         return nom;
     }
-    public PapotageEvent createPapotageEvent(String sujet, String corps){
-        return new PapotageEvent(this,sujet,corps);
+
+    @Override
+    public String toString() {
+        return "Bavard{" +
+                "nom='" + nom + '\'' +
+                '}';
     }
 
 
     @Override
     public void newMessageRecu(PapotageEvent message) {
+
+    }
+
+    @Override
+    public void createPapotage(String sujet, String corps) {
+        PapotageEvent papotage=new PapotageEvent(this,sujet,corps);
+        for(Concierge concierge:this.listConcierge){
+            concierge.newMessageRecu(papotage);
+        }
+
 
     }
 }
