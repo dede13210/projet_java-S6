@@ -4,4 +4,8 @@ public class Bavard {
     public Bavard(String nom) {
         this.nom = nom;
     }
+
+    public String getNom() {
+        return nom;
+    }
 }
