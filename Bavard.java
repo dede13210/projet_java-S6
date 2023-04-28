@@ -38,6 +38,5 @@ public class Bavard implements IPapotageListener {
             concierge.newMessageRecu(papotage);
         }
 
-
     }
 }
