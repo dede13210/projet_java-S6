@@ -9,7 +9,9 @@ public class Concierge implements IPapotageListener{
         this.listBavard=new ArrayList<Bavard>();
     }
 
-
+    public void ajouterBavard(Bavard bavard) {
+        this.listBavard.add(bavard);
+    }
 
     @Override
     public void newMessageRecu(PapotageEvent message) {

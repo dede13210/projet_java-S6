@@ -13,6 +13,10 @@ public class Bavard implements IPapotageListener {
         return nom;
     }
 
+    public void ajouterConcierge(Concierge concierge) {
+        this.listConcierge.add(concierge);
+    }
+
     @Override
     public String toString() {
         return "Bavard{" +
