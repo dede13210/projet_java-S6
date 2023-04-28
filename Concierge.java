@@ -16,7 +16,7 @@ public class Concierge implements IPapotageListener{
     @Override
     public void newMessageRecu(PapotageEvent message) {
         for(Bavard bavard:this.listBavard){
-            newMessageRecu(message);
+            bavard.newMessageRecu(message);
         }
 
     }

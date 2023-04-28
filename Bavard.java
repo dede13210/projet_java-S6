@@ -27,6 +27,7 @@ public class Bavard implements IPapotageListener {
 
     @Override
     public void newMessageRecu(PapotageEvent message) {
+        System.out.println(message.toString());
 
     }
 
