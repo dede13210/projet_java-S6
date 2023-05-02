@@ -6,7 +6,7 @@ public class PapotageEvent extends EventObject {
 
 
 
-    public PapotageEvent(Object source, String sujet, String corps) {
+    public PapotageEvent(Bavard source, String sujet, String corps) {
         super(source);
         this.sujet = sujet;
         this.corps = corps;
@@ -20,11 +20,10 @@ public class PapotageEvent extends EventObject {
         return corps;
     }
 
+
     @Override
     public String toString() {
-        return "Message de "+this.source.toString()+" {" +
-                "sujet : " + sujet + '\'' +
-                ", corps : " + corps +
-                '}';
+        return "Message de "+this.source.toString()+"sujet :"+ sujet + '\n' +
+                ", corps : " + corps ;
     }
 }

@@ -4,6 +4,12 @@ public class Batiment {
 
     public Batiment(String nom){
         this.nom=nom;
+        creerConcierge("manuel");
+    }
+    public Batiment(Concierge concierge, String nom){
+
+        this.concierge= concierge;
+        this.nom=nom;
     }
     public void creerConcierge(String nom){
         Concierge concierge1=new Concierge(nom);

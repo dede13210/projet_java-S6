@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Concierge implements IPapotageListener{
     private String nom;
     private ArrayList<Bavard> listBavard;
+    private ConciergeGUI conciergeGUI;
 
     public Concierge(String nom) {
         this.nom = nom;
@@ -16,7 +17,6 @@ public class Concierge implements IPapotageListener{
         }
         return null;
     }
-    private ConciergeGUI conciergeGUI;
 
     public void setConciergeGUI(ConciergeGUI conciergeGUI) {
         this.conciergeGUI = conciergeGUI;

@@ -3,10 +3,14 @@ import java.util.ArrayList;
 public class Bavard implements IPapotageListener {
     private String nom;
     private ArrayList<Concierge> listConcierge;
+    private BavardGUI bavardGUI;
 
     public Bavard(String nom) {
         this.nom = nom;
         this.listConcierge=new ArrayList<Concierge>();
+    }
+    public void addBavardGUI(BavardGUI bavardGUI){
+        this.bavardGUI = bavardGUI;
     }
 
     public String getNom() {
@@ -29,7 +33,7 @@ public class Bavard implements IPapotageListener {
 
     @Override
     public void newMessageRecu(PapotageEvent message) {
-        System.out.println(message.toString());
+        bavardGUI.messageListener(message);
 
     }
 

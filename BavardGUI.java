@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EventObject;
 
 public class BavardGUI {
     private JFrame frame;
@@ -18,6 +19,7 @@ public class BavardGUI {
     }
 
     private void initialize() {
+        bavard.addBavardGUI(this);
         frame = new JFrame("Bavard - " + bavard.getNom());
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,11 +55,14 @@ public class BavardGUI {
                 String sujet = textFieldSujet.getText();
                 String corps = textFieldCorps.getText();
                 bavard.createPapotage(sujet, corps);
-                listModel.addElement(sujet + " - " + corps.substring(0, Math.min(corps.length(), 20)) + "...");
                 textFieldSujet.setText("");
                 textFieldCorps.setText("");
             }
         });
+
+    }
+    public void messageListener(PapotageEvent message){
+        listModel.addElement(message.getSource().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
     }
 
     public void show() {

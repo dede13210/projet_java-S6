@@ -38,7 +38,7 @@ public class BatimentGUI {
 
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 300, 150);
+        frame.setBounds(100, 100, 400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
@@ -73,7 +73,7 @@ public class BatimentGUI {
         btnAjouterConcierge.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String nomConcierge = textFieldNomConcierge.getText();
-                Batiment selectedBatiment = (Batiment) comboBoxBatiments.getSelectedItem();
+                Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
                 if (selectedBatiment != null) {
                     selectedBatiment.creerConcierge(nomConcierge);
                     ConciergeGUI conciergeGUI = new ConciergeGUI(selectedBatiment.getConcierge());
@@ -89,10 +89,11 @@ public class BatimentGUI {
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String nomBavard = textFieldNomBavard.getText();
-                Batiment selectedBatiment = (Batiment) comboBoxBatiments.getSelectedItem();
+                Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
                 if (selectedBatiment != null) {
                     selectedBatiment.creerBavard(nomBavard);
                     BavardGUI bavardGUI = new BavardGUI(selectedBatiment.getBavardByName(nomBavard), selectedBatiment.getConcierge());
+                    bavardGUI.show();
                     textFieldNomBavard.setText("");
                 } else {
                     JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);
