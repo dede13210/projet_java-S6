@@ -14,6 +14,9 @@ public class Batiment {
         bavard.ajouterConcierge(this.concierge);
         this.concierge.ajouterBavard(bavard);
     }
+    public void associeBavard(Bavard bavard){
+        this.concierge.ajouterBavard(bavard);
+    }
 }
 
 
