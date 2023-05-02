@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.EventObject;
 
 public class BavardGUI {
@@ -21,6 +23,12 @@ public class BavardGUI {
     private void initialize() {
         bavard.addBavardGUI(this);
         frame = new JFrame("Bavard - " + bavard.getNom());
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                // Insérez ici le code à exécuter lorsque la fenêtre est fermée
+                disconnectListener(new OfflineBavardEvent(this,bavard.getNom()));
+            }
+        });
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout(0, 0));
