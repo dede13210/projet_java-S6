@@ -6,13 +6,15 @@ import java.awt.event.ActionListener;
 public class BatimentGUI {
     JFrame frame;
     private JTextField textFieldNomBavard;
+    private JTextField textFieldNomConcierge;
 
-    private Batiment batiment;
+    private GestionnaireBatiments gestionnaireBatiments;
+    private JComboBox<String> comboBoxBatiments;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                BatimentGUI window = new BatimentGUI(new Batiment("Mon Batiment"));
+                BatimentGUI window = new BatimentGUI(new GestionnaireBatiments());
                 window.frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -20,10 +22,19 @@ public class BatimentGUI {
         });
     }
 
-    public BatimentGUI(Batiment batiment) {
-        this.batiment = batiment;
+    private void updateBatimentList() {
+        comboBoxBatiments.removeAllItems();
+        for (Batiment batiment : gestionnaireBatiments.getBatiments()) {
+            comboBoxBatiments.addItem(batiment.getNom());
+        }
+    }
+
+    public BatimentGUI(GestionnaireBatiments gestionnaireBatiments) {
+        this.gestionnaireBatiments = gestionnaireBatiments;
         initialize();
     }
+
+
 
     private void initialize() {
         frame = new JFrame();
@@ -38,17 +49,55 @@ public class BatimentGUI {
         frame.getContentPane().add(textFieldNomBavard);
         textFieldNomBavard.setColumns(10);
 
+        JLabel lblSelectionBatiment = new JLabel("Sélectionner un bâtiment :");
+        frame.getContentPane().add(lblSelectionBatiment);
+
+        comboBoxBatiments = new JComboBox<>();
+        frame.getContentPane().add(comboBoxBatiments);
+
+        updateBatimentList();
+
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
         frame.getContentPane().add(btnCreerBavard);
+
+        JLabel lblNomConcierge = new JLabel("Nom du Concierge :");
+        frame.add(lblNomConcierge);
+
+        textFieldNomConcierge = new JTextField();
+        frame.add(textFieldNomConcierge);
+        textFieldNomConcierge.setColumns(10);
+
+        JButton btnAjouterConcierge = new JButton("Ajouter Concierge");
+        frame.add(btnAjouterConcierge);
+
+        btnAjouterConcierge.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String nomConcierge = textFieldNomConcierge.getText();
+                Batiment selectedBatiment = (Batiment) comboBoxBatiments.getSelectedItem();
+                if (selectedBatiment != null) {
+                    selectedBatiment.creerConcierge(nomConcierge);
+                    ConciergeGUI conciergeGUI = new ConciergeGUI(selectedBatiment.getConcierge());
+                    selectedBatiment.getConcierge().setConciergeGUI(conciergeGUI);
+                    conciergeGUI.show();
+                    textFieldNomConcierge.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
 
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String nomBavard = textFieldNomBavard.getText();
-                batiment.creerBavard(nomBavard);
-                BavardGUI bavardGUI = new BavardGUI(batiment.concierge.getBavardByName(nomBavard));
-                bavardGUI.show();
+                Batiment selectedBatiment = (Batiment) comboBoxBatiments.getSelectedItem();
+                if (selectedBatiment != null) {
+                    selectedBatiment.creerBavard(nomBavard);
+                    BavardGUI bavardGUI = new BavardGUI(selectedBatiment.getBavardByName(nomBavard), selectedBatiment.getConcierge());
+                    textFieldNomBavard.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
 }
-

@@ -46,4 +46,8 @@ public class Concierge implements IPapotageListener{
     public String getNom() {
         return this.nom;
     }
+
+    public ArrayList<Bavard> getListBavard() {
+        return listBavard;
+    }
 }

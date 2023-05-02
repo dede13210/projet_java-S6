@@ -12,7 +12,7 @@ public class BavardGUI {
 
     private Bavard bavard;
 
-    public BavardGUI(Bavard bavard) {
+    public BavardGUI(Bavard bavard, Concierge concierge) {
         this.bavard = bavard;
         initialize();
     }

@@ -17,6 +17,22 @@ public class Batiment {
     public void associeBavard(Bavard bavard){
         this.concierge.ajouterBavard(bavard);
     }
+
+    public String getNom() {
+        return this.nom;
+    }
+    public Concierge getConcierge() {
+        return concierge;
+    }
+
+    public Bavard getBavardByName(String nomBavard) {
+        for(Bavard bavard:concierge.getListBavard()){
+            if(bavard.getNom().equals(nomBavard)){
+                return bavard;
+            }
+        }
+        return null;
+    }
 }
 
 
