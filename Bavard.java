@@ -51,4 +51,9 @@ public class Bavard implements IPapotageListener {
         bavardGUI.connectListener(connect);
 
     }
+    @Override
+    public void newUserDisconnected(OfflineBavardEvent disconnect) {
+        bavardGUI.disconnectListener(disconnect);
+
+    }
 }

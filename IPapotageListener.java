@@ -6,6 +6,6 @@ public interface IPapotageListener  {
     void createPapotage(String sujet, String corps);
 
     void newUserConnected(OnLineBavardEvent bavard);
-
+    void newUserDisconnected(OfflineBavardEvent bavard);
 
 }

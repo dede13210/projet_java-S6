@@ -67,6 +67,9 @@ public class BavardGUI {
     public void connectListener(OnLineBavardEvent connect){
         listModel.addElement(connect.toString());
     }
+    public void disconnectListener(OfflineBavardEvent disconnect){
+        listModel.addElement(disconnect.toString());
+    }
 
     public void show() {
         frame.setVisible(true);
