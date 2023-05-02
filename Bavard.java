@@ -17,6 +17,8 @@ public class Bavard implements IPapotageListener {
         this.listConcierge.add(concierge);
     }
 
+
+
     @Override
     public String toString() {
         return "Bavard{" +
