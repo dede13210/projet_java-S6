@@ -60,32 +60,6 @@ public class BatimentGUI {
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
         frame.getContentPane().add(btnCreerBavard);
 
-        JLabel lblNomConcierge = new JLabel("Nom du Concierge :");
-        frame.add(lblNomConcierge);
-
-        textFieldNomConcierge = new JTextField();
-        frame.add(textFieldNomConcierge);
-        textFieldNomConcierge.setColumns(10);
-
-        JButton btnAjouterConcierge = new JButton("Ajouter Concierge");
-        frame.add(btnAjouterConcierge);
-
-        btnAjouterConcierge.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String nomConcierge = textFieldNomConcierge.getText();
-                Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
-                if (selectedBatiment != null) {
-                    selectedBatiment.creerConcierge(nomConcierge);
-                    ConciergeGUI conciergeGUI = new ConciergeGUI(selectedBatiment.getConcierge());
-                    selectedBatiment.getConcierge().setConciergeGUI(conciergeGUI);
-                    conciergeGUI.show();
-                    textFieldNomConcierge.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String nomBavard = textFieldNomBavard.getText();
