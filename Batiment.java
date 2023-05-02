@@ -1,5 +1,5 @@
 public class Batiment {
-    private Concierge concierge;
+    Concierge concierge;
     private String nom;
 
     public Batiment(String nom){
