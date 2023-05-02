@@ -8,4 +8,9 @@ public class OnLineBavardEvent extends EventObject {
         super(source);
         this.bavard = bavard;
     }
+
+    @Override
+    public String toString() {
+        return bavard +' '+ connectMessage;
+    }
 }

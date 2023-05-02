@@ -11,16 +11,7 @@ public class BatimentGUI {
     private GestionnaireBatiments gestionnaireBatiments;
     private JComboBox<String> comboBoxBatiments;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                BatimentGUI window = new BatimentGUI(new GestionnaireBatiments());
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+
 
     private void updateBatimentList() {
         comboBoxBatiments.removeAllItems();
@@ -65,9 +56,14 @@ public class BatimentGUI {
                 String nomBavard = textFieldNomBavard.getText();
                 Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
                 if (selectedBatiment != null) {
+                    OnLineBavardEvent online = new OnLineBavardEvent(this,nomBavard);
+                    selectedBatiment.concierge.getConciergeGUI().show();
                     selectedBatiment.creerBavard(nomBavard);
                     BavardGUI bavardGUI = new BavardGUI(selectedBatiment.getBavardByName(nomBavard), selectedBatiment.getConcierge());
                     bavardGUI.show();
+                    for(Bavard bavard : selectedBatiment.concierge.getListBavard()){
+                        bavard.newUserConnected(online);
+                    }
                     textFieldNomBavard.setText("");
                 } else {
                     JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);

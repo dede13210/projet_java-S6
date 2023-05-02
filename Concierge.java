@@ -8,7 +8,9 @@ public class Concierge implements IPapotageListener{
     public Concierge(String nom) {
         this.nom = nom;
         this.listBavard=new ArrayList<Bavard>();
+        this.conciergeGUI = new ConciergeGUI(this);
     }
+
     public Bavard getBavardByName(String nom) {
         for (Bavard bavard : listBavard) {
             if (bavard.getNom().equals(nom)) {
@@ -41,6 +43,15 @@ public class Concierge implements IPapotageListener{
     @Override
     public void createPapotage(String sujet, String corps) {
 
+    }
+
+    @Override
+    public void newUserConnected(OnLineBavardEvent bavard) {
+
+    }
+
+    public ConciergeGUI getConciergeGUI() {
+        return conciergeGUI;
     }
 
     public String getNom() {

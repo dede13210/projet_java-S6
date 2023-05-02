@@ -64,6 +64,9 @@ public class BavardGUI {
     public void messageListener(PapotageEvent message){
         listModel.addElement(message.getSource().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
     }
+    public void connectListener(OnLineBavardEvent connect){
+        listModel.addElement(connect.toString());
+    }
 
     public void show() {
         frame.setVisible(true);

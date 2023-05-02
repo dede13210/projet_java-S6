@@ -45,4 +45,10 @@ public class Bavard implements IPapotageListener {
         }
 
     }
+
+    @Override
+    public void newUserConnected(OnLineBavardEvent connect) {
+        bavardGUI.connectListener(connect);
+
+    }
 }
