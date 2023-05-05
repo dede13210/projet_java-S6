@@ -47,8 +47,6 @@ public class BavardGUI {
         JButton btnEnvoyer = new JButton("Envoyer");
         panel.add(btnEnvoyer);
 
-        JButton btnFermer = new JButton("Fermer");
-        panel.add(btnFermer);
 
         listModel = new DefaultListModel<>();
         listMessages = new JList<>(listModel);
@@ -67,13 +65,6 @@ public class BavardGUI {
                                      }
 
         );
-        btnFermer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                disconnectListener(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
-
-                frame.dispose();
-            }
-        });
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 bavard.getListConcierge().get(0).newUserDisconnected(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
