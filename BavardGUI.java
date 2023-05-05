@@ -76,7 +76,7 @@ public class BavardGUI {
         });
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                disconnectListener(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
+                bavard.getListConcierge().get(0).newUserDisconnected(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
                 frame.dispose();
             }
         });

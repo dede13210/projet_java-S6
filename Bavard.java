@@ -17,6 +17,10 @@ public class Bavard implements IPapotageListener {
         return nom;
     }
 
+    public ArrayList<Concierge> getListConcierge() {
+        return listConcierge;
+    }
+
     public void ajouterConcierge(Concierge concierge) {
         this.listConcierge.add(concierge);
     }

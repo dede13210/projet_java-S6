@@ -51,8 +51,10 @@ public class Concierge implements IPapotageListener{
     }
 
     @Override
-    public void newUserDisconnected(OfflineBavardEvent bavard) {
-
+    public void newUserDisconnected(OfflineBavardEvent offlineBavardEvent) {
+        for (Bavard bavard : listBavard) {
+            bavard.newUserDisconnected(offlineBavardEvent);
+        }
     }
 
     public ConciergeGUI getConciergeGUI() {
