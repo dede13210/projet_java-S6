@@ -55,6 +55,8 @@ public class Concierge implements IPapotageListener{
         for (Bavard bavard : listBavard) {
             bavard.newUserDisconnected(offlineBavardEvent);
         }
+        this.listBavard.remove(getBavardByName(offlineBavardEvent.getBavard()));
+        System.out.println(this.listBavard);
     }
 
     public ConciergeGUI getConciergeGUI() {

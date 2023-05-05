@@ -6,10 +6,9 @@ public class Bavard implements IPapotageListener {
     private BavardGUI bavardGUI;
     private ArrayList<Bavard> listBavardConnecte;
 
-    public Bavard(String nom,ArrayList<Bavard> listBavardConnecte) {
+    public Bavard(String nom) {
         this.nom = nom;
         this.listConcierge=new ArrayList<Concierge>();
-        this.listBavardConnecte=listBavardConnecte;
     }
     public void addBavardGUI(BavardGUI bavardGUI){
         this.bavardGUI = bavardGUI;

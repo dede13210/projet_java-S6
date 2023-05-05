@@ -58,7 +58,7 @@ public class BatimentGUI {
                 if (selectedBatiment != null) {
                     OnLineBavardEvent online = new OnLineBavardEvent(this,nomBavard);
                     selectedBatiment.concierge.getConciergeGUI().show();
-                    selectedBatiment.creerBavard(nomBavard,selectedBatiment.concierge.getListBavardConnecte());
+                    selectedBatiment.creerBavard(nomBavard);
                     BavardGUI bavardGUI = new BavardGUI(selectedBatiment.getBavardByName(nomBavard), selectedBatiment.getConcierge());
                     bavardGUI.show();
                     for(Bavard bavard : selectedBatiment.concierge.getListBavard()){

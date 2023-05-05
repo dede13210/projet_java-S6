@@ -9,6 +9,10 @@ public class OfflineBavardEvent extends EventObject {
         this.bavard = bavard;
     }
 
+    public String getBavard() {
+        return bavard;
+    }
+
     @Override
     public String toString() {
         return bavard +' '+ connectMessage;

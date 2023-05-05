@@ -23,7 +23,9 @@ public class PapotageEvent extends EventObject {
 
     @Override
     public String toString() {
-        return "Message de "+this.source.toString()+"sujet :"+ sujet + '\n' +
+        String sourceString =this.source.toString();
+        String[] sourcetab = sourceString.split("'");
+        return "Message de "+sourcetab[1]+"sujet :"+ sujet + '\n' +
                 ", corps : " + corps ;
     }
 }

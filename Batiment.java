@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Batiment {
     Concierge concierge;
     private String nom;
@@ -17,8 +15,8 @@ public class Batiment {
         Concierge concierge1=new Concierge(nom);
         this.concierge=concierge1;
     }
-    public void creerBavard(String nom, ArrayList<Bavard> listBavard){
-        Bavard bavard = new Bavard(nom, listBavard);
+    public void creerBavard(String nom){
+        Bavard bavard = new Bavard(nom);
         bavard.ajouterConcierge(this.concierge);
         this.concierge.ajouterBavard(bavard);
 
