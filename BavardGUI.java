@@ -23,7 +23,7 @@ public class BavardGUI {
     private void initialize() {
         bavard.addBavardGUI(this);
         frame = new JFrame("Bavard - " + bavard.getNom());
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(100, 100, 550, 400);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
@@ -53,6 +53,13 @@ public class BavardGUI {
         JScrollPane scrollPane = new JScrollPane(listMessages);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
+        String listeConnecte="liste des personnes connectées\n" + "Adam\n" + "Arthur\n";
+
+        JTextArea text = new JTextArea(listeConnecte, 1, 1);
+        text.setMargin(new Insets(5, 5, 5, 5)); // Ajoute un espace de 5 pixels avec les bords
+        text.setEditable(false);
+
+        frame.getContentPane().add(text, BorderLayout.EAST);
         btnEnvoyer.addActionListener(new ActionListener() {
                                          public void actionPerformed(ActionEvent e) {
                                              String sujet = textFieldSujet.getText();
