@@ -23,14 +23,8 @@ public class BavardGUI {
     private void initialize() {
         bavard.addBavardGUI(this);
         frame = new JFrame("Bavard - " + bavard.getNom());
-        frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                // Insérez ici le code à exécuter lorsque la fenêtre est fermée
-                disconnectListener(new OfflineBavardEvent(this,bavard.getNom()));
-            }
-        });
         frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
         JPanel panel = new JPanel();
@@ -53,18 +47,37 @@ public class BavardGUI {
         JButton btnEnvoyer = new JButton("Envoyer");
         panel.add(btnEnvoyer);
 
+        JButton btnFermer = new JButton("Fermer");
+        panel.add(btnFermer);
+
         listModel = new DefaultListModel<>();
         listMessages = new JList<>(listModel);
         JScrollPane scrollPane = new JScrollPane(listMessages);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
         btnEnvoyer.addActionListener(new ActionListener() {
+                                         public void actionPerformed(ActionEvent e) {
+                                             String sujet = textFieldSujet.getText();
+                                             String corps = textFieldCorps.getText();
+                                             bavard.createPapotage(sujet, corps);
+                                             textFieldSujet.setText("");
+                                             textFieldCorps.setText("");
+                                         }
+
+                                     }
+
+        );
+        btnFermer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String sujet = textFieldSujet.getText();
-                String corps = textFieldCorps.getText();
-                bavard.createPapotage(sujet, corps);
-                textFieldSujet.setText("");
-                textFieldCorps.setText("");
+                disconnectListener(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
+
+                frame.dispose();
+            }
+        });
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                disconnectListener(new OfflineBavardEvent(BavardGUI.this, bavard.getNom()));
+                frame.dispose();
             }
         });
 
@@ -83,4 +96,3 @@ public class BavardGUI {
         frame.setVisible(true);
     }
 }
-
