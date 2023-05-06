@@ -55,7 +55,13 @@ public class BatimentGUI {
             public void actionPerformed(ActionEvent e) {
                 String nomBavard = textFieldNomBavard.getText();
                 Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
-                if (selectedBatiment != null) {
+                Boolean checkNom = true;
+                for(Bavard bavard:selectedBatiment.concierge.getListBavard()){
+                    if (bavard.getNom().equals(nomBavard)){
+                        checkNom = false;
+                    }
+                }
+                if (selectedBatiment != null && checkNom) {
                     OnLineBavardEvent online = new OnLineBavardEvent(this,nomBavard);
                     selectedBatiment.concierge.getConciergeGUI().show();
                     selectedBatiment.creerBavard(nomBavard);
@@ -66,7 +72,7 @@ public class BatimentGUI {
                     }
                     textFieldNomBavard.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Veuillez sélectionner un bâtiment.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Veuillez utiliser un autre nom.", "nom déjà éxistant", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
