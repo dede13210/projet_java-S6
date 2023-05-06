@@ -44,7 +44,7 @@ public class Bavard implements IPapotageListener {
 
     @Override
     public void createPapotage(String sujet, String corps) {
-        PapotageEvent papotage=new PapotageEvent(this,sujet,corps);
+        PapotageEvent papotage=new PapotageEvent(this,this.nom,sujet,corps);
         for(Concierge concierge:this.listConcierge){
             concierge.newMessageRecu(papotage);
         }

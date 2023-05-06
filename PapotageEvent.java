@@ -1,15 +1,21 @@
 import java.util.EventObject;
 
 public class PapotageEvent extends EventObject {
+    private String nomBavard;
     private String sujet;
     private String corps;
 
 
 
-    public PapotageEvent(Bavard source, String sujet, String corps) {
+    public PapotageEvent(Bavard source,String nomBavard, String sujet, String corps) {
         super(source);
+        this.nomBavard=nomBavard;
         this.sujet = sujet;
         this.corps = corps;
+    }
+
+    public String getNomBavard() {
+        return nomBavard;
     }
 
     public String getSujet() {
@@ -23,9 +29,7 @@ public class PapotageEvent extends EventObject {
 
     @Override
     public String toString() {
-        String sourceString =this.source.toString();
-        String[] sourcetab = sourceString.split("'");
-        return "Message de "+sourcetab[1]+"sujet :"+ sujet + '\n' +
+        return "Message de "+this.nomBavard+" "+"sujet :"+ sujet + '\n' +
                 ", corps : " + corps ;
     }
 }

@@ -58,6 +58,14 @@ public class BavardGUI {
 
         // Créez un modèle pour stocker les utilisateurs connectés
         connectedUsersModel = new DefaultListModel<>();
+        connectedUsersModel.addElement("Liste des bavards connectés");
+        for(Bavard bavard1:this.bavard.getListConcierge().get(0).getListBavard()){
+            if(!bavard1.equals(this.bavard)){
+                connectedUsersModel.addElement(bavard1.getNom());
+            }
+
+        }
+
         listConnectedUsers = new JList<>(connectedUsersModel);
         JScrollPane connectedUsersScrollPane = new JScrollPane(listConnectedUsers);
         frame.getContentPane().add(connectedUsersScrollPane, BorderLayout.EAST);
@@ -82,7 +90,7 @@ public class BavardGUI {
 
     }
     public void messageListener(PapotageEvent message){
-        listModel.addElement(message.getSource().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
+        listModel.addElement(message.getNomBavard().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
     }
     public void connectListener(OnLineBavardEvent connect){
         listModel.addElement(connect.toString());
