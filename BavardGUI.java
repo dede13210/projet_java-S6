@@ -13,9 +13,10 @@ public class BavardGUI {
     private JList<String> listMessages;
     private DefaultListModel<String> listModel;
 
+    private JList<String> listConnectedUsers;
+    private DefaultListModel<String> connectedUsersModel;
+
     private Bavard bavard;
-    private String listeConnecte;
-    private JTextArea text;
 
     public BavardGUI(Bavard bavard, Concierge concierge) {
         this.bavard = bavard;
@@ -55,13 +56,11 @@ public class BavardGUI {
         JScrollPane scrollPane = new JScrollPane(listMessages);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-        listeConnecte="liste des personnes connectées\n";
-
-        text = new JTextArea(listeConnecte, 1, 1);
-        text.setMargin(new Insets(5, 5, 5, 5)); // Ajoute un espace de 5 pixels avec les bords
-        text.setEditable(false);
-
-        frame.getContentPane().add(text, BorderLayout.EAST);
+        // Créez un modèle pour stocker les utilisateurs connectés
+        connectedUsersModel = new DefaultListModel<>();
+        listConnectedUsers = new JList<>(connectedUsersModel);
+        JScrollPane connectedUsersScrollPane = new JScrollPane(listConnectedUsers);
+        frame.getContentPane().add(connectedUsersScrollPane, BorderLayout.EAST);
         btnEnvoyer.addActionListener(new ActionListener() {
                                          public void actionPerformed(ActionEvent e) {
                                              String sujet = textFieldSujet.getText();
@@ -87,14 +86,12 @@ public class BavardGUI {
     }
     public void connectListener(OnLineBavardEvent connect){
         listModel.addElement(connect.toString());
-        listeConnecte.concat(connect.getBavard()).concat("\n");
-        text = new JTextArea(listeConnecte, 1, 1);
-        text.setMargin(new Insets(5, 5, 5, 5)); // Ajoute un espace de 5 pixels avec les bords
-        text.setEditable(false);
-
+        connectedUsersModel.addElement(connect.getBavard()); // Ajoutez le nom d'utilisateur à la liste des utilisateurs connectés
     }
+
     public void disconnectListener(OfflineBavardEvent disconnect){
         listModel.addElement(disconnect.toString());
+        connectedUsersModel.removeElement(disconnect.getBavard()); // Supprimez le nom d'utilisateur de la liste des utilisateurs connectés
     }
 
     public void show() {
