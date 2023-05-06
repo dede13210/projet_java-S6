@@ -14,6 +14,8 @@ public class BavardGUI {
     private DefaultListModel<String> listModel;
 
     private Bavard bavard;
+    private String listeConnecte;
+    private JTextArea text;
 
     public BavardGUI(Bavard bavard, Concierge concierge) {
         this.bavard = bavard;
@@ -53,9 +55,9 @@ public class BavardGUI {
         JScrollPane scrollPane = new JScrollPane(listMessages);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-        String listeConnecte="liste des personnes connectées\n" + "Adam\n" + "Arthur\n";
+        listeConnecte="liste des personnes connectées\n";
 
-        JTextArea text = new JTextArea(listeConnecte, 1, 1);
+        text = new JTextArea(listeConnecte, 1, 1);
         text.setMargin(new Insets(5, 5, 5, 5)); // Ajoute un espace de 5 pixels avec les bords
         text.setEditable(false);
 
@@ -85,6 +87,11 @@ public class BavardGUI {
     }
     public void connectListener(OnLineBavardEvent connect){
         listModel.addElement(connect.toString());
+        listeConnecte.concat(connect.getBavard()).concat("\n");
+        text = new JTextArea(listeConnecte, 1, 1);
+        text.setMargin(new Insets(5, 5, 5, 5)); // Ajoute un espace de 5 pixels avec les bords
+        text.setEditable(false);
+
     }
     public void disconnectListener(OfflineBavardEvent disconnect){
         listModel.addElement(disconnect.toString());
