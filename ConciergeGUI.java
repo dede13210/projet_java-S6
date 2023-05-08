@@ -23,6 +23,7 @@ public class ConciergeGUI {
 
         listModel = new DefaultListModel<>();
         listMessages = new JList<>(listModel);
+        listMessages.setBackground(Color.pink);
         JScrollPane scrollPane = new JScrollPane(listMessages);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
     }

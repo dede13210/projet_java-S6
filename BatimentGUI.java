@@ -29,9 +29,12 @@ public class BatimentGUI {
 
     private void initialize() {
         frame = new JFrame();
+        frame.setBackground(Color.magenta); // Ajout de la couleur de fond
         frame.setBounds(100, 100, 400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        frame.getContentPane().setBackground(Color.magenta);
+
 
         JLabel lblNomBavard = new JLabel("Nom du Bavard :");
         frame.getContentPane().add(lblNomBavard);
@@ -39,17 +42,22 @@ public class BatimentGUI {
         textFieldNomBavard = new JTextField();
         frame.getContentPane().add(textFieldNomBavard);
         textFieldNomBavard.setColumns(10);
+        textFieldNomBavard.setBackground(Color.pink); // Ajout de la couleur de fond du champ de texte
 
         JLabel lblSelectionBatiment = new JLabel("Sélectionner un bâtiment :");
         frame.getContentPane().add(lblSelectionBatiment);
 
         comboBoxBatiments = new JComboBox<>();
         frame.getContentPane().add(comboBoxBatiments);
+        comboBoxBatiments.setBackground(Color.pink); // Ajout de la couleur de fond du menu déroulant
 
         updateBatimentList();
 
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
         frame.getContentPane().add(btnCreerBavard);
+        btnCreerBavard.setBackground(Color.pink); // Ajout de la couleur de fond du bouton
+        btnCreerBavard.setForeground(Color.red); // Ajout de la couleur du texte du bouton
+
 
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

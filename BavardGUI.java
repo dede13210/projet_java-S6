@@ -31,12 +31,15 @@ public class BavardGUI {
         frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
         JPanel panel = new JPanel();
+        panel.setBackground(Color.magenta);
         frame.getContentPane().add(panel, BorderLayout.NORTH);
+        frame.setBackground(Color.magenta);
 
         JLabel lblSujet = new JLabel("Sujet:");
         panel.add(lblSujet);
 
         textFieldSujet = new JTextField();
+        textFieldSujet.setBackground(Color.pink);
         panel.add(textFieldSujet);
         textFieldSujet.setColumns(10);
 
@@ -44,16 +47,21 @@ public class BavardGUI {
         panel.add(lblCorps);
 
         textFieldCorps = new JTextField();
+        textFieldCorps.setBackground(Color.pink);
         panel.add(textFieldCorps);
         textFieldCorps.setColumns(10);
 
         JButton btnEnvoyer = new JButton("Envoyer");
+        btnEnvoyer.setBackground(Color.pink);
+        btnEnvoyer.setForeground(Color.red);
         panel.add(btnEnvoyer);
 
 
         listModel = new DefaultListModel<>();
         listMessages = new JList<>(listModel);
+        listMessages.setBackground(Color.pink);
         JScrollPane scrollPane = new JScrollPane(listMessages);
+        scrollPane.setBackground(Color.magenta);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 
         // Créez un modèle pour stocker les utilisateurs connectés
@@ -67,7 +75,10 @@ public class BavardGUI {
         }
 
         listConnectedUsers = new JList<>(connectedUsersModel);
+        listConnectedUsers.setBackground(Color.pink);
         JScrollPane connectedUsersScrollPane = new JScrollPane(listConnectedUsers);
+        connectedUsersScrollPane.setBackground(Color.magenta);
+        connectedUsersScrollPane.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
         frame.getContentPane().add(connectedUsersScrollPane, BorderLayout.EAST);
         btnEnvoyer.addActionListener(new ActionListener() {
                                          public void actionPerformed(ActionEvent e) {
