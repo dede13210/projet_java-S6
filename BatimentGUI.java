@@ -112,6 +112,7 @@ public class BatimentGUI {
                 }
             }
         });
+        //actionListener qui renvoie les thèmes sélectionnés
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> selectedThemes = new ArrayList<>();
