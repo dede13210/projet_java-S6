@@ -4,12 +4,16 @@ public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                //on creer deux batiment, polytech et iae
+                //on creer un batiment polytech
                 Batiment polytech = new Batiment("polytech");
-                Batiment iae = new Batiment("iae");
+
+                //on creer un concierge puis on creer un second batiment polytech
+                Concierge francois = new Concierge("francois");
+                Batiment iae = new Batiment(francois, "iae");
 
                 //on creer un gestionnaire de batiment
                 GestionnaireBatiments gestionnaireBatiments = new GestionnaireBatiments();
+
 
                 //on ajoute les deux batiments
                 gestionnaireBatiments.ajouterBatiment(polytech);
