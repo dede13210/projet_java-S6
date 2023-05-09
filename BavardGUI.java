@@ -130,6 +130,7 @@ public class BavardGUI {
 
         );
 
+        //ajoute le bavard à la liste des personnes ignorer
         btnIgnorer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
