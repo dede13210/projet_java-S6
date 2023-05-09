@@ -33,6 +33,6 @@ public class ConciergeGUI {
     }
 
     public void addMessage(PapotageEvent message) {
-        listModel.addElement(message.getNomBavard().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
+        listModel.addElement(message.getNomBavard().toString()+'-'+message.getSujet() + " - " + message.getCorps()+ "...");
     }
 }

@@ -101,7 +101,7 @@ public class BavardGUI {
 
     }
     public void messageListener(PapotageEvent message){
-        listModel.addElement(message.getNomBavard().toString()+'-'+message.getSujet() + " - " + message.getCorps().substring(0, Math.min(message.getCorps().length(), 20)) + "...");
+        listModel.addElement(message.getNomBavard().toString().toUpperCase()+'-'+message.getSujet() + " - " + message.getCorps()+ "...");
     }
     public void connectListener(OnLineBavardEvent connect){
         listModel.addElement(connect.toString());
