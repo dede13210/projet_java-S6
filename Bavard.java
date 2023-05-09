@@ -25,6 +25,9 @@ public class Bavard implements IPapotageListener {
     public void addListBavardIgnorer(Bavard bavard1) {
         this.listBavardIgnorer.add(bavard1);
     }
+    public void removeListBavardIgnorer(Bavard bavard1) {
+        this.listBavardIgnorer.remove(bavard1);
+    }
 
     public boolean isNotInListIgnore(String nom){
         for (Bavard bavard2:listBavardIgnorer){

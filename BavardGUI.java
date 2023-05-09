@@ -32,7 +32,7 @@ public class BavardGUI {
 
         //creer une nouvelle Jframe
         frame = new JFrame("Bavard - " + bavard.getNom());
-        frame.setBounds(100, 100, 700, 400);
+        frame.setBounds(100, 100, 800, 400);
 
         //on fait en sorte que la fenetre ne se ferme pas lorsqu'on appuie sur la croix
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -90,6 +90,13 @@ public class BavardGUI {
         btnIgnorer.setBorder(new RoundBtn(5));
         panel.add(btnIgnorer);
 
+        //on creer un bouton ignorer qui permet d'écouter les message de quelqu'un
+        JButton btnEcouter = new JButton("Ecouter");
+        btnEcouter.setBackground(Color.pink);
+        btnEcouter.setForeground(Color.green);
+        btnEcouter.setBorder(new RoundBtn(5));
+        panel.add(btnEcouter);
+
         //on creer un modèle pour affiche les papotages
         listModel = new DefaultListModel<>();
         listMessages = new JList<>(listModel);
@@ -140,6 +147,16 @@ public class BavardGUI {
 
             }
         });
+        btnEcouter.addActionListener(new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            if(textFieldIgnore.getText() != null){
+                bavard.removeListBavardIgnorer(bavard.getListConcierge().get(0).getBavardByName(textFieldIgnore.getText()));
+            }
+
+        }
+    });
 
         //recupere l'évènement de la fermeture de la fenetre et envoie l'evenement d'un bavard deconnecte
         frame.addWindowListener(new WindowAdapter() {
