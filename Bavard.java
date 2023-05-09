@@ -56,7 +56,8 @@ public class Bavard implements IPapotageListener {
         for(Bavard bavard3 : listBavard){
             for(String theme : this.listTheme){
                 if(!bavard3.getListTheme().contains(theme)){
-                    this.addListBavardIgnorer(bavard3);
+                    bavard3.addListBavardIgnorer(this);
+                    break;
             }
         }
     }}
