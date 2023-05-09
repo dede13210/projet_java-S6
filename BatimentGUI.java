@@ -20,6 +20,7 @@ public class BatimentGUI {
             comboBoxBatiments.addItem(batiment.getNom());
         }
     }
+
     //constructeur qui permet d'initialiser le gestionnaire de batiments
     public BatimentGUI(GestionnaireBatiments gestionnaireBatiments) {
         this.gestionnaireBatiments = gestionnaireBatiments;
@@ -65,7 +66,7 @@ public class BatimentGUI {
         //on initialise la liste
         updateBatimentList();
 
-        /* TODO
+
         // Créer une liste de JCheckBox pour chaque thème
         ArrayList<JCheckBox> checkBoxes = new ArrayList<>();
         for (String theme : themes) {
@@ -74,7 +75,7 @@ public class BatimentGUI {
             frame.getContentPane().add(checkBox);
             checkBox.setBackground(Color.pink);
         }
-         */
+
 
         //on créer le bouton qui permet de valider l'action de création
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
@@ -88,21 +89,31 @@ public class BatimentGUI {
                 //on récupère le nom du batiment
                 String nomBavard = textFieldNomBavard.getText();
                 Batiment selectedBatiment = gestionnaireBatiments.getBatimentByName(comboBoxBatiments.getSelectedItem().toString());
+
+                //remplie une list les thèmes sélectionnés
+                ArrayList<String> selectedThemes = new ArrayList<>();
+                for (JCheckBox checkBox : checkBoxes) {
+                    if (checkBox.isSelected()) {
+                        selectedThemes.add(checkBox.getText());
+                    }
+                }
+
                 //on vérifie que le nom du bavard créé n'existe pas
                 Boolean checkNom = true;
-                for(Bavard bavard:selectedBatiment.concierge.getListBavard()){
-                    if (bavard.getNom().equals(nomBavard)){
+                for (Bavard bavard : selectedBatiment.concierge.getListBavard()) {
+                    if (bavard.getNom().equals(nomBavard)) {
                         checkNom = false;
                     }
                 }
                 //on créer le bavard
                 if (selectedBatiment != null && checkNom) {
-                    OnLineBavardEvent online = new OnLineBavardEvent(this,nomBavard);
+                    OnLineBavardEvent online = new OnLineBavardEvent(this, nomBavard);
                     selectedBatiment.concierge.getConciergeGUI().show();
-                    selectedBatiment.creerBavard(nomBavard);
+                    selectedBatiment.creerBavard(nomBavard,selectedThemes);
+                    selectedBatiment.getBavardByName(nomBavard).themeEnCommun(selectedBatiment.getConcierge().getListBavard());
                     BavardGUI bavardGUI = new BavardGUI(selectedBatiment.getBavardByName(nomBavard), selectedBatiment.getConcierge());
                     bavardGUI.show();
-                    for(Bavard bavard : selectedBatiment.concierge.getListBavard()){
+                    for (Bavard bavard : selectedBatiment.concierge.getListBavard()) {
                         bavard.newUserConnected(online);
                     }
                     textFieldNomBavard.setText("");
@@ -114,17 +125,6 @@ public class BatimentGUI {
                 }
             }
         });
-        //actionListener qui renvoie les thèmes sélectionnés
-        /* TODO
-        btnCreerBavard.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<String> selectedThemes = new ArrayList<>();
-                for (JCheckBox checkBox : checkBoxes) {
-                    if (checkBox.isSelected()) {
-                        selectedThemes.add(checkBox.getText());
-                    }
-                }
-            }
-        });*/
-    }
+
+}
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Batiment {
     Concierge concierge;
     private String nom;
@@ -21,8 +23,8 @@ public class Batiment {
     }
 
     //fonction qui creer un bavard à partir d'un nom
-    public void creerBavard(String nom){
-        Bavard bavard = new Bavard(nom);
+    public void creerBavard(String nom, ArrayList<String> list){
+        Bavard bavard = new Bavard(nom,list);
         bavard.ajouterConcierge(this.concierge);
         this.concierge.ajouterBavard(bavard);
 
