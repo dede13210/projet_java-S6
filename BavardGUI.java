@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.EventObject;
 
 public class BavardGUI {
     private JFrame frame;
@@ -71,6 +70,12 @@ public class BavardGUI {
         btnEnvoyer.setBackground(Color.pink);
         btnEnvoyer.setForeground(Color.red);
         panel.add(btnEnvoyer);
+
+        JButton btnIgnorer = new JButton("Ignorer");
+        btnIgnorer.setBackground(Color.pink);
+        btnIgnorer.setForeground(Color.blue);
+        btnIgnorer.setBorder(new RoundBtn(5));
+        panel.add(btnIgnorer);
 
         //on creer un modèle pour affiche les papotages
         listModel = new DefaultListModel<>();
