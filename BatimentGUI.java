@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BatimentGUI {
     //On créer les objets de bases de notre code
@@ -27,9 +29,13 @@ public class BatimentGUI {
 
     //fonction pour initialiser l'interface graphique
     private void initialize() {
+        //je créer quelque thème pour les bavards
+        ArrayList<String> themes = new ArrayList<>(Arrays.asList("Sport", "Devoirs", "Nature"));
+
+
         //création de la fenêtre principale
         frame = new JFrame();
-        frame.setBackground(Color.magenta); // Ajout de la couleur de fond
+        frame.setBackground(Color.magenta);
         frame.setBounds(100, 100, 400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -54,16 +60,25 @@ public class BatimentGUI {
         // on créer la liste déroulante des batiments
         comboBoxBatiments = new JComboBox<>();
         frame.getContentPane().add(comboBoxBatiments);
-        comboBoxBatiments.setBackground(Color.pink); // Ajout de la couleur de fond du menu déroulant
+        comboBoxBatiments.setBackground(Color.pink);
 
         //on initialise la liste
         updateBatimentList();
 
+        // Créer une liste de JCheckBox pour chaque thème
+        ArrayList<JCheckBox> checkBoxes = new ArrayList<>();
+        for (String theme : themes) {
+            JCheckBox checkBox = new JCheckBox(theme);
+            checkBoxes.add(checkBox);
+            frame.getContentPane().add(checkBox);
+            checkBox.setBackground(Color.pink);
+        }
+
         //on créer le bouton qui permet de valider l'action de création
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
         frame.getContentPane().add(btnCreerBavard);
-        btnCreerBavard.setBackground(Color.pink); // Ajout de la couleur de fond du bouton
-        btnCreerBavard.setForeground(Color.red); // Ajout de la couleur du texte du bouton
+        btnCreerBavard.setBackground(Color.pink);
+        btnCreerBavard.setForeground(Color.red);
 
         //on créer l'actionListener qui réalise l'action voulue en créant un bavard
         btnCreerBavard.addActionListener(new ActionListener() {
@@ -94,6 +109,16 @@ public class BatimentGUI {
                 //on ne créer pas le bavard car il existe déjà
                 else {
                     JOptionPane.showMessageDialog(frame, "Veuillez utiliser un autre nom.", "nom déjà éxistant", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        btnCreerBavard.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> selectedThemes = new ArrayList<>();
+                for (JCheckBox checkBox : checkBoxes) {
+                    if (checkBox.isSelected()) {
+                        selectedThemes.add(checkBox.getText());
+                    }
                 }
             }
         });
