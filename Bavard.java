@@ -5,16 +5,32 @@ public class Bavard implements IPapotageListener {
     private ArrayList<Concierge> listConcierge;
     private BavardGUI bavardGUI;
     private ArrayList<Bavard> listBavardConnecte;
+    private ArrayList<Bavard> listBavardIgnorer;
 
     //constructeur
     public Bavard(String nom) {
         this.nom = nom;
         this.listConcierge=new ArrayList<Concierge>();
+        this.listBavardIgnorer = new ArrayList<>();
     }
 
     //fonction qui lie une fenetre bavard gui au bavard
     public void addBavardGUI(BavardGUI bavardGUI){
         this.bavardGUI = bavardGUI;
+    }
+
+    //ajoute un bavard à ignorer
+    public void addListBavardIgnorer(Bavard bavard1) {
+        this.listBavardIgnorer.add(bavard1);
+    }
+
+    public boolean isNotInListIgnore(String nom){
+        for (Bavard bavard2:listBavardIgnorer){
+            if (bavard2.getNom().equals(nom)){
+                return false;
+            }
+        }
+        return true;
     }
 
     //les getters

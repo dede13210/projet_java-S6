@@ -133,6 +133,9 @@ public class BavardGUI {
         btnIgnorer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(textFieldIgnore.getText() != null){
+                    bavard.addListBavardIgnorer(bavard.getListConcierge().get(0).getBavardByName(textFieldIgnore.getText()));
+                }
 
             }
         });
@@ -149,8 +152,9 @@ public class BavardGUI {
 
     //reçois un papotageEvent et l'affiche
     public void messageListener(PapotageEvent message){
-        listModel.addElement(message.getNomBavard().toString().toUpperCase()+'-'+message.getSujet() + " - " + message.getCorps()+ "...");
-    }
+        if(bavard.isNotInListIgnore(message.getNomBavard())){
+            listModel.addElement(message.getNomBavard().toUpperCase()+'-'+message.getSujet() + " - " + message.getCorps()+ "...");
+    }}
 
     //reçois un onlineBavardEvent
     public void connectListener(OnLineBavardEvent connect){
