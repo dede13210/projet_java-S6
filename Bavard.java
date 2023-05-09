@@ -53,13 +53,18 @@ public class Bavard implements IPapotageListener {
     }
 
     public void themeEnCommun(ArrayList<Bavard> listBavard){
+
         for(Bavard bavard3 : listBavard){
+            boolean themeCommun = false;
             for(String theme : this.listTheme){
-                if(!bavard3.getListTheme().contains(theme)){
-                    bavard3.addListBavardIgnorer(this);
+                if (bavard3.getListTheme().contains(theme)) {
+                    themeCommun = true;
                     break;
+                }
             }
-        }
+            if (!themeCommun){
+               this.addListBavardIgnorer(bavard3);
+            }
     }}
 
 
