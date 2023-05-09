@@ -18,7 +18,7 @@ public class BatimentGUI {
             comboBoxBatiments.addItem(batiment.getNom());
         }
     }
-    //fonction qui permet d'initialiser le gestionnaire de batiments
+    //constructeur qui permet d'initialiser le gestionnaire de batiments
     public BatimentGUI(GestionnaireBatiments gestionnaireBatiments) {
         this.gestionnaireBatiments = gestionnaireBatiments;
         initialize();
