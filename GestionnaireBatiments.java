@@ -8,7 +8,7 @@ public class GestionnaireBatiments {
         batiments = new ArrayList<>();
     }
 
-    //ajoute un batiment à la liste de batyiment
+    //ajoute un batiment à la liste de batiment
     public void ajouterBatiment(Batiment batiment) {
         batiments.add(batiment);
     }
