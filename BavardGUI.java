@@ -71,6 +71,7 @@ public class BavardGUI {
         btnEnvoyer.setForeground(Color.red);
         panel.add(btnEnvoyer);
 
+        //on creer un bouton ignorer qui permet d'ignorer les message de quelqu'un
         JButton btnIgnorer = new JButton("Ignorer");
         btnIgnorer.setBackground(Color.pink);
         btnIgnorer.setForeground(Color.blue);
@@ -116,6 +117,13 @@ public class BavardGUI {
                                      }
 
         );
+
+        btnIgnorer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
 
         //recupere l'évènement de la fermeture de la fenetre et envoie l'evenement d'un bavard deconnecte
         frame.addWindowListener(new WindowAdapter() {
