@@ -65,6 +65,7 @@ public class BatimentGUI {
         //on initialise la liste
         updateBatimentList();
 
+        /* TODO
         // Créer une liste de JCheckBox pour chaque thème
         ArrayList<JCheckBox> checkBoxes = new ArrayList<>();
         for (String theme : themes) {
@@ -73,6 +74,7 @@ public class BatimentGUI {
             frame.getContentPane().add(checkBox);
             checkBox.setBackground(Color.pink);
         }
+         */
 
         //on créer le bouton qui permet de valider l'action de création
         JButton btnCreerBavard = new JButton("Créer et connecter Bavard");
@@ -113,6 +115,7 @@ public class BatimentGUI {
             }
         });
         //actionListener qui renvoie les thèmes sélectionnés
+        /* TODO
         btnCreerBavard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> selectedThemes = new ArrayList<>();
@@ -122,6 +125,6 @@ public class BatimentGUI {
                     }
                 }
             }
-        });
+        });*/
     }
 }
