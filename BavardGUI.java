@@ -73,9 +73,11 @@ public class BavardGUI {
         btnEnvoyer.setForeground(Color.red);
         panel.add(btnEnvoyer);
 
+        //on créer un jlabel pour le champ ignorer
         JLabel lblIgnore = new JLabel("Bavard à ignorer :");
         panel.add(lblIgnore);
 
+        //on créer un champ de texte afin d'écrire le nom du bavard à ignorer
         textFieldIgnore = new JTextField();
         textFieldIgnore.setBackground(Color.pink);
         panel.add(textFieldIgnore);
