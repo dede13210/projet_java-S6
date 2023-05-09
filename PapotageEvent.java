@@ -6,7 +6,7 @@ public class PapotageEvent extends EventObject {
     private String corps;
 
 
-
+    //constructeur prend en paramètre la source sous forme de Bavard et de String, le sujet et le corps sous forme de string
     public PapotageEvent(Bavard source,String nomBavard, String sujet, String corps) {
         super(source);
         this.nomBavard=nomBavard;
@@ -14,6 +14,7 @@ public class PapotageEvent extends EventObject {
         this.corps = corps;
     }
 
+    //les getters
     public String getNomBavard() {
         return nomBavard;
     }
@@ -26,7 +27,7 @@ public class PapotageEvent extends EventObject {
         return corps;
     }
 
-
+    //renvoie le message sous forme de string
     @Override
     public String toString() {
         return "Message de "+this.nomBavard+" "+"sujet :"+ sujet + '\n' +
