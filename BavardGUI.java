@@ -15,6 +15,8 @@ public class BavardGUI {
     private JList<String> listConnectedUsers;
     private DefaultListModel<String> connectedUsersModel;
 
+    private JTextField textFieldIgnore;
+
     private Bavard bavard;
 
     //constructeur prend en parametre un bavard et un concierge
@@ -30,7 +32,7 @@ public class BavardGUI {
 
         //creer une nouvelle Jframe
         frame = new JFrame("Bavard - " + bavard.getNom());
-        frame.setBounds(100, 100, 550, 400);
+        frame.setBounds(100, 100, 700, 400);
 
         //on fait en sorte que la fenetre ne se ferme pas lorsqu'on appuie sur la croix
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -70,6 +72,14 @@ public class BavardGUI {
         btnEnvoyer.setBackground(Color.pink);
         btnEnvoyer.setForeground(Color.red);
         panel.add(btnEnvoyer);
+
+        JLabel lblIgnore = new JLabel("Bavard à ignorer :");
+        panel.add(lblIgnore);
+
+        textFieldIgnore = new JTextField();
+        textFieldIgnore.setBackground(Color.pink);
+        panel.add(textFieldIgnore);
+        textFieldIgnore.setColumns(10);
 
         //on creer un bouton ignorer qui permet d'ignorer les message de quelqu'un
         JButton btnIgnorer = new JButton("Ignorer");
