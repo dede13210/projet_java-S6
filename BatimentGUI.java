@@ -35,7 +35,7 @@ public class BatimentGUI {
 
 
         //création de la fenêtre principale
-        frame = new JFrame();
+        frame = new JFrame("ePapotage-Connection");
         frame.setBackground(Color.magenta);
         frame.setBounds(100, 100, 400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
